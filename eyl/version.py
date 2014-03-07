@@ -31,7 +31,7 @@ class Version(namedtuple('Version', ['major', 'minor', 'patch', 'extra'])):
         return s
 
 def get_version():
-    version = Version(0, 0, 0, '')
+    version = Version(0, 0, 0, 'development')
 
     GIT_DIR = os.path.join(settings.BASE_DIR, '.git')
     if not os.path.isdir(GIT_DIR):
