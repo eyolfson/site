@@ -18,7 +18,6 @@ from aur.models import Update
 
 def home(request):
     query = ('SELECT id, arch_id, package, version, MAX(timestamp) FROM '
-             'aur_update GROUP BY package, arch_id ORDER BY package ASC, '
-             'arch_id ASC')
+             'aur_update GROUP BY package, arch_id ORDER BY package ASC')
     context = {'updates': Update.objects.raw(query)}
     return render(request, 'aur/home.html', context)
