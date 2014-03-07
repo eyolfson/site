@@ -1,0 +1,17 @@
+[
+  {
+    "model": "aur.arch",
+    "pk": 1,
+    "fields": {"name": "any"}
+  },
+  {
+    "model": "aur.arch",
+    "pk": 2,
+    "fields": {"name": "i686"}
+  },
+  {
+    "model": "aur.arch",
+    "pk": 3,
+    "fields": {"name": "x86_64"}
+  }
+]

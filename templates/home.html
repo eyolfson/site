@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<p>A collection of random code and musings.</p>
+
+{% if aur_updates %}
+<h1>Latest AUR Updates</h1>
+
+{% include "aur/updates_table.html" with updates=aur_updates %}
+{% endif %}
+
+{% endblock %}

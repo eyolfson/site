@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+  {% if form.errors %}
+<div class="alert alert-danger">Your username and password didn't match. Please try again.</div>
+  {% endif %}
+
+<form class="form-inline" role="form" method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label class="sr-only" for="username">Username</label>
+    <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="passwd">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" required>
+  </div>
+  {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+  <button type="submit" class="btn btn-default">Log in</button>
+</form>
+{% endblock %}
