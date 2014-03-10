@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Eyl{% endblock %}
 
 {% block content %}
 <p>A collection of random code and musings.</p>
@@ -11,4 +11,9 @@
 
 {% include "aur/updates_table.html" with updates=aur_updates %}
 {% endif %}
+
+<p class="text-right">
+  <a href="https://github.com/eyolfson/"><i class="fa fa-github fa-2x"></i></a>
+  <a href="https://twitter.com/eyolfson/"><i class="fa fa-twitter fa-2x"></i></a>
+</p>
 {% endblock %}
