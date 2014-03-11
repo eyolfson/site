@@ -5,11 +5,24 @@
 {% block nav-aur %} class="active"{% endblock %}
 
 {% block content %}
+<h1>AUR</h1>
+
+A personal Arch user repository
+
+<h2>Usage</h2>
+
+<p>If you would like to use this repository, add the following to
+<code>/etc/pacman.conf</code>:</p>
+
+<pre>[eyl]
+SigLevel = Required
+Server = https://eyl.io/media/aur/$arch</pre>
+
+<p>All packages are signed with 0xD660A1C7.</p>
 
 {% if updates %}
-<h1>Database</h1>
+<h2>Database</h2>
 
 {% include "aur/updates_table.html" %}
 {% endif %}
-
 {% endblock %}
