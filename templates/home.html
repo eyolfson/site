@@ -4,6 +4,11 @@
 {% block title %}Eyl{% endblock %}
 
 {% block content %}
+<p class="text-center">
+  <a href="https://github.com/eyolfson/"><i class="fa fa-github fa-4x"></i></a>
+  <a href="https://twitter.com/eyolfson/"><i class="fa fa-twitter fa-4x"></i></a>
+</p>
+
 <p>A collection of random code and musings.</p>
 
 {% if aur_updates %}
@@ -11,9 +16,4 @@
 
 {% include "aur/updates_table.html" with updates=aur_updates %}
 {% endif %}
-
-<p class="text-right">
-  <a href="https://github.com/eyolfson/"><i class="fa fa-github fa-2x"></i></a>
-  <a href="https://twitter.com/eyolfson/"><i class="fa fa-twitter fa-2x"></i></a>
-</p>
 {% endblock %}
