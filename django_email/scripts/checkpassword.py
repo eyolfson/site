@@ -17,6 +17,7 @@
 import logging
 import os
 import subprocess
+import sys
 
 from django.contrib.auth import authenticate
 
