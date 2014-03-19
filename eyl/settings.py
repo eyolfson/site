@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'aur',
+    'django_email',
     'django_gitolite',
     'django_ssh',
 )
