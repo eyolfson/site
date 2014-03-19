@@ -19,22 +19,18 @@ import os
 import subprocess
 
 from django.contrib.auth import authenticate
-from django.core.management.base import BaseCommand
 
 logger = logging.getLogger('email')
 
-class Command(BaseCommand):
+try:
+    with os.fdopen(3) as f:
+        username, password = f.read().split('\0')[:2]
+except Exception as e:
+    logger.error(e)
+    exit(111)
 
-    # http://wiki2.dovecot.org/AuthDatabase/CheckPassword
-    def handle(self, *args, **options):
-        try:
-            with os.fdopen(3) as f:
-                username, password = f.read().split('\0')[:2]
-        except Exception as e:
-            logger.error(e)
-            exit(111)
-        user = authenticate(username=username, password=password)
-        if user is None:
-            exit(1)
-        reply_command = args[0]
-        subprocess.call(['sudo', '-E', '-u', 'dovecot', reply_command])
+user = authenticate(username=username, password=password)
+if user is None:
+    exit(1)
+
+subprocess.call(['sudo', '-u', 'dovecot'] + sys.argv[1:])
