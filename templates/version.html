@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Version{% endblock %}
+
+{% block content %}
+<h1>Version</h1>
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>Python:</strong> {{ python_version }}</li>
+  <li class="list-group-item"><strong>Django:</strong> {{ django_version }}</li>
+  <li class="list-group-item"><strong>Site:</strong> {{ site_version }}</li>
+  <li class="list-group-item"><strong>Bootstrap:</strong> 3.1.1</li>
+  <li class="list-group-item"><strong>Font Awesome:</strong> 4.0.3</li>
+</ul>
+{% endblock %}

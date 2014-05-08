@@ -25,6 +25,15 @@ def home(request):
     context = {'aur_updates': Update.objects.order_by('-timestamp')[:5]}
     return render(request, 'home.html', context)
 
+def version(request):
+    import django
+    import sys
+    from eyl.version import get_version
+    context = {'python_version': '{}.{}.{}'.format(*sys.version_info[:3]),
+               'django_version': django.get_version(),
+               'site_version': get_version()}
+    return render(request, 'version.html', context)
+
 @login_required
 def profile(request):
     if request.method == 'POST':

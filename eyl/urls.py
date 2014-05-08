@@ -19,6 +19,7 @@ from eyl import views
 
 urlpatterns = patterns('',
     url(r'^$', views.home, name='home'),
+    url(r'^version/$', views.version, name='version'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^profile/(?P<key_id>\d+)/$', views.profile_remove,
         name='profile_remove'),
