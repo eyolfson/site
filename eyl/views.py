@@ -28,29 +28,10 @@ def home(request):
 def version(request):
     import django
     import sys
-    from eyl.version import get_version
+    import eyl.version
+    import django_ssh.version
     context = {'python_version': '{}.{}.{}'.format(*sys.version_info[:3]),
                'django_version': django.get_version(),
-               'site_version': get_version()}
+               'site_version': eyl.version.get_version(),
+               'django_ssh_version': django_ssh.version.get_version()}
     return render(request, 'version.html', context)
-
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        key_form = KeyForm(request.user, request.POST, request.FILES)
-        if key_form.is_valid():
-            key_form.create()
-            return redirect('profile')
-    else:
-        key_form = KeyForm(request.user)
-    keys = Key.objects.filter(user=request.user)
-    return render(request, 'profile.html', {'keys': keys, 'key_form': key_form})
-
-@login_required
-def profile_remove(request, key_id):
-    try:
-        key = Key.objects.get(pk=key_id, user=request.user)
-        key.delete()
-    except Key.DoesNotExist:
-        pass
-    return redirect('profile')

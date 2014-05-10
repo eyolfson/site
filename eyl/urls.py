@@ -20,11 +20,10 @@ from eyl import views
 urlpatterns = patterns('',
     url(r'^$', views.home, name='home'),
     url(r'^version/$', views.version, name='version'),
-    url(r'^profile/$', views.profile, name='profile'),
-    url(r'^profile/(?P<key_id>\d+)/$', views.profile_remove,
-        name='profile_remove'),
+
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
 
     url(r'^aur/', include('aur.urls', namespace='aur')),
+    url(r'^ssh/', include('django_ssh.urls', namespace='ssh')),
 )

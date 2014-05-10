@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}SSH{% endblock %}
+
+{% block content %}
+<h1>SSH</h1>
+
+{% if keys %}
+<h2>Keys</h2>
+
+<ul class="list-group">
+  {% for key in keys %}
+  <li class="list-group-item">
+    <p class="list-group-item-text"><strong>{{ key.comment }}</strong></p>
+    <p class="list-group-item-text"><code>{{ key.fingerprint }}</code></p>
+    <p class="list-group-item-text"><a href="{% url 'ssh:remove' key.id %}" class="btn btn-danger btn-xs" role="button">Remove</a></p>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<h3>Add</h3>
+
+<p>
+  <a href="{% url 'ssh:add-file' %}" class="btn btn-primary btn-xs" role="button">File</a>
+  or
+  <a href="{% url 'ssh:add-text' %}" class="btn btn-primary btn-xs" role="button">Text</a>
+</p>
+{% endblock %}
