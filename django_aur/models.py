@@ -31,7 +31,7 @@ class Package(models.Model):
     arch = models.ForeignKey(Arch)
 
     def __str__(self):
-        return '{} ({})'.format(name, arch)
+        return '{} ({})'.format(self.name, self.arch)
 
     class Meta:
         db_table = 'aur_package'
