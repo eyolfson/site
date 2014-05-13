@@ -29,7 +29,7 @@ class Update(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '{}-{}-{}'.format(self.name, self.version, self.arch)
+        return '{}-{}-{}'.format(self.package, self.version, self.arch)
 
     class Meta:
         unique_together = ('arch', 'package', 'version')
