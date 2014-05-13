@@ -17,6 +17,7 @@
 import logging
 import os
 
+import django
 from django.contrib.auth import authenticate
 
 logger = logging.getLogger('email')
@@ -28,6 +29,7 @@ except Exception as e:
     logger.error(e)
     exit(111)
 
+django.setup()
 user = authenticate(username=username, password=password)
 if user is None:
     exit(1)
