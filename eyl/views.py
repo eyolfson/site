@@ -17,9 +17,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
-from aur.models import Update
-from django_ssh.forms import KeyForm
-from django_ssh.models import Key
+from django_aur.models import Update
 
 def home(request):
     context = {'aur_updates': Update.objects.order_by('-timestamp')[:5]}

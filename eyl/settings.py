@@ -24,7 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'aur',
+    'django_aur',
     'django_email',
     'django_gitolite',
     'django_ssh',

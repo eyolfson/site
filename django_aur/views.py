@@ -14,10 +14,8 @@
 
 from django.shortcuts import render
 
-from aur.models import Update
+from django_aur.models import Update
 
 def home(request):
-    query = ('SELECT id, arch_id, package, version, MAX(timestamp) FROM '
-             'aur_update GROUP BY package, arch_id ORDER BY package ASC')
-    context = {'updates': Update.objects.raw(query)}
+    context = {'updates': Update.objects.all()}
     return render(request, 'aur/home.html', context)

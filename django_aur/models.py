@@ -22,14 +22,33 @@ class Arch(models.Model):
     def __str__(self):
         return self.name
 
-class Update(models.Model):
+    class Meta:
+        db_table = 'aur_arch'
+        ordering = ['name']
+
+class Package(models.Model):
+    name = models.CharField(max_length=64, blank=False, db_index=True)
     arch = models.ForeignKey(Arch)
-    package = models.CharField(max_length=64, blank=False, db_index=True)
+
+    def __str__(self):
+        return '{} ({})'.format(name, arch)
+
+    class Meta:
+        db_table = 'aur_package'
+        ordering = ['name', 'arch']
+        unique_together = ('name', 'arch')
+
+class Update(models.Model):
+    package = models.ForeignKey(Package)
     version = models.CharField(max_length=64, blank=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '{}-{}-{}'.format(self.package, self.version, self.arch)
+        return '{}-{}-{}'.format(self.package.name, self.version,
+                                 self.package.arch)
 
     class Meta:
-        unique_together = ('arch', 'package', 'version')
+        db_table = 'aur_update'
+        get_latest_by = 'timestamp'
+        ordering = ['package', '-timestamp']
+        unique_together = ('package', 'version')

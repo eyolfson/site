@@ -16,7 +16,7 @@
 
 from django.core.management.base import BaseCommand, CommandError
 
-from aur.models import Arch, Update
+from django_aur.models import Arch, Package, Update
 
 class Command(BaseCommand):
     args = 'package version architecture'
@@ -36,4 +36,7 @@ class Command(BaseCommand):
             msg = 'Architecture "{}" does not exist'
             raise CommandError(msg.format(args[2]))
 
-        Update.objects.create(arch=arch, package=args[0], version=args[1])
+        name = args[0]
+        version = args[1]
+        package = Package.objects.get_or_create(name=args[0], arch=arch)[0]
+        Update.objects.create(package=package, version=args[1])

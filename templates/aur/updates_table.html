@@ -11,8 +11,8 @@
     <tbody>
       {% for update in updates %}
       <tr>
-        <td>{{ update.package }}</td>
-        <td>{{ update.arch }}</td>
+        <td>{{ update.package.name }}</td>
+        <td>{{ update.package.arch }}</td>
         <td>{{ update.version }}</td>
         <td>{{ update.timestamp|date:"Y-m-d" }}</td>
       </tr>
