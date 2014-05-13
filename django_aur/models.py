@@ -27,8 +27,8 @@ class Arch(models.Model):
         ordering = ['name']
 
 class Package(models.Model):
+    arch = models.ForeignKey(Arch, related_name='packages')
     name = models.CharField(max_length=64, blank=False, db_index=True)
-    arch = models.ForeignKey(Arch)
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.arch)
@@ -39,7 +39,7 @@ class Package(models.Model):
         unique_together = ('name', 'arch')
 
 class Update(models.Model):
-    package = models.ForeignKey(Package)
+    package = models.ForeignKey(Package, related_name='updates')
     version = models.CharField(max_length=64, blank=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 

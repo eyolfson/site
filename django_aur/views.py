@@ -14,8 +14,8 @@
 
 from django.shortcuts import render
 
-from django_aur.models import Update
+from django_aur.models import Package
 
 def home(request):
-    context = {'updates': Update.objects.all()}
+    context = {'updates': [x.updates.latest() for x in Package.objects.all()]}
     return render(request, 'aur/home.html', context)
