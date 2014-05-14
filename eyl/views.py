@@ -20,7 +20,9 @@ from django.contrib.auth.decorators import login_required
 from django_aur.models import Update
 
 def home(request):
-    context = {'aur_updates': Update.objects.order_by('-timestamp')[:5]}
+    context = {'aur_updates':
+        Update.objects.filter(package__is_available=True
+            ).order_by('-timestamp')[:5]}
     return render(request, 'home.html', context)
 
 def version(request):

@@ -29,6 +29,7 @@ class Arch(models.Model):
 class Package(models.Model):
     arch = models.ForeignKey(Arch, related_name='packages')
     name = models.CharField(max_length=64, blank=False, db_index=True)
+    is_available = models.BooleanField(default=True, blank=False, null=False)
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.arch)
