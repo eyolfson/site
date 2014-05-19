@@ -25,6 +25,9 @@ def home(request):
             ).order_by('-timestamp')[:5]}
     return render(request, 'home.html', context)
 
+def about(request):
+    return render(request, 'about.html')
+
 def version(request):
     import django
     import sys
