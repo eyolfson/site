@@ -6,12 +6,12 @@
 {% block content %}
 <h1>Git</h1>
 
-{% if accesses %}
+{% if repos %}
 <h2>Repos</h2>
 
 <ul class="list-group">
-{% for a in accesses %}
-  <li class="list-group-item">{{ a.repo }}</li>
+{% for repo in repos %}
+  <li class="list-group-item"><a href="{{ repo.get_absolute_url }}">{{ repo }}</a></li>
 {% endfor %}
 </ul>
 {% endif %}

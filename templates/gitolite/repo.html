@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ repo }}{% endblock %}
+
+{% block content %}
+<h1>{{ repo }}</h1>
+
+{% if pushes %}
+<h2>Pushes</h2>
+
+  {% for push in pushes %}
+    {{ push }}
+  {% endfor %}
+{% endif %}
+{% endblock %}
