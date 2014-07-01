@@ -26,5 +26,6 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
 
     url(r'^aur/', include('django_aur.urls', namespace='aur')),
+    url(r'^git/', include('django_gitolite.urls', namespace='git')),
     url(r'^ssh/', include('django_ssh.urls', namespace='ssh')),
 )

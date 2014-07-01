@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Git{% endblock %}
+
+{% block content %}
+<h1>Git</h1>
+
+{% if accesses %}
+<h2>Repos</h2>
+
+<ul class="list-group">
+{% for a in accesses %}
+  <li class="list-group-item">{{ a.repo }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

@@ -29,6 +29,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
 {% if user.is_authenticated %}
+            <li><a href="{% url 'git:index' %}">Git</a></li>
             <li><a href="{% url 'ssh:index' %}">SSH</a></li>
             <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
 {% else %}

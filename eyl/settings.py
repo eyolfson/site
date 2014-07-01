@@ -26,7 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_aur',
     'django_email',
-    'django_gitolite',
+    'django_gitolite.apps.GitoliteConfig',
     'django_ssh',
 )
 MIDDLEWARE_CLASSES = (

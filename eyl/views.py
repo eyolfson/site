@@ -33,8 +33,10 @@ def version(request):
     import sys
     import eyl.version
     import django_ssh.version
+    import django_gitolite.version
     context = {'python_version': '{}.{}.{}'.format(*sys.version_info[:3]),
                'django_version': django.get_version(),
                'site_version': eyl.version.get_version(),
-               'django_ssh_version': django_ssh.version.get_version()}
+               'django_ssh_version': django_ssh.version.get_version(),
+               'django_gitolite_version': django_gitolite.version.get_version()}
     return render(request, 'version.html', context)
