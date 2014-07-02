@@ -9,8 +9,12 @@
 {% if pushes %}
 <h2>Pushes</h2>
 
+<ul class="list-group">
   {% for push in pushes %}
-    {{ push }}
+  <li class="list-group-item">
+    {{ push.refname }} {{ push.old_rev|slice:":6" }}..{{ push.new_rev|slice:":6" }}
+  </li>
   {% endfor %}
+</ul>
 {% endif %}
 {% endblock %}
