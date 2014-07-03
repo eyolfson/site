@@ -10,6 +10,13 @@
 </p>
 
 <p>A collection of random code and musings.</p>
+{% if blog_post %}
+<h1>Latest Blog Post</h1>
+
+<p>
+  <strong>{{ blog_post.date|date:"Y-m-d" }}</strong> <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+</p>
+{% endif %}
 
 {% if aur_updates %}
 <h1>Latest AUR Updates</h1>

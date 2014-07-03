@@ -13,3 +13,7 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('blog:post', (), {'slug': self.slug})
+
+    class Meta:
+        get_latest_by = 'date'
+        ordering = ['-date']

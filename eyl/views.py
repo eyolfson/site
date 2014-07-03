@@ -18,11 +18,14 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
 from django_aur.models import Update
+from django_blog.models import Post
 
 def home(request):
-    context = {'aur_updates':
-        Update.objects.filter(package__is_available=True
-            ).order_by('-timestamp')[:5]}
+    context = {
+        'aur_updates': Update.objects.filter(package__is_available=True
+            ).order_by('-timestamp')[:5],
+        'blog_post': Post.objects.latest(),
+    }
     return render(request, 'home.html', context)
 
 def about(request):
