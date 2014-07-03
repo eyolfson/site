@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'django_aur',
+    'django_blog',
     'django_email',
     'django_gitolite.apps.GitoliteConfig',
     'django_ssh',
@@ -72,3 +73,6 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
 
 GITOLITE_USER = 'git'
+GITOLITE_HOOKS = (
+    'django_blog.hooks.update_blog',
+)

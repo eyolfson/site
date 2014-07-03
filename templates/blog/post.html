@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block nav-blog %} class="active"{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+
+{{ post.content|safe }}
+{% endblock %}

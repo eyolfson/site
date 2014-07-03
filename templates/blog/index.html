@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block nav-blog %} class="active"{% endblock %}
+
+{% block content %}
+<h1>Blog</h1>
+
+{% if posts %}
+<ul class="list-group">
+  {% for post in posts %}
+  <li class="list-group-item">
+    <strong>{{ post.date|date:"Y-m-d" }}</strong> <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
