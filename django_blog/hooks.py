@@ -20,6 +20,7 @@ def update_blog(push):
     git_repo = pygit2.Repository(
         os.path.join(home_dir(), 'repositories', '{}.git'.format(repo_path))
     )
+    # TODO: There is no diff if this is the first commit
     for patch in git_repo.diff(push.old_rev, push.new_rev):
         if patch.status == 'A':
             pass
