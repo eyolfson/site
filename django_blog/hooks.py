@@ -28,6 +28,11 @@ def update_blog(push):
             if patch.old_file_path != patch.new_file_path:
                 print("Old and new file paths do not match")
                 continue
+        elif patch.status == 'D':
+            slug = patch.old_file_path.rstrip('.md')
+            post = Post.objects.get(slug=slug)
+            post.delete()
+            continue
         else:
             print("Unhandled status '{}'".format(patch.status))
             continue
