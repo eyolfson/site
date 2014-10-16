@@ -1,4 +1,4 @@
 Django==1.7c1
-django-gitolite==0.1.3
+django-gitolite==0.1.4
 django-ssh==0.1.0
 Markdown==2.4.1
