@@ -38,7 +38,7 @@ def update_blog(push):
             continue
         file_path = patch.new_file_path
         slug = file_path.rstrip('.md')
-        markdown_content = git_repo[patch.new_oid].data.decode()
+        markdown_content = git_repo[patch.new_id].data.decode()
         md = markdown.Markdown(extensions=['headerid(level=2, forceid=False)',
                                            'meta'],
                                output_format='html5')
