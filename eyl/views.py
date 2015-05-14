@@ -21,10 +21,14 @@ from django_aur.models import Update
 from django_blog.models import Post
 
 def home(request):
+    try:
+        blog_post = Post.objects.latest()
+    except:
+        blog_post = None
     context = {
         'aur_updates': Update.objects.filter(package__is_available=True
             ).order_by('-timestamp')[:5],
-        'blog_post': Post.objects.latest(),
+        'blog_post': blog_post,
     }
     return render(request, 'home.html', context)
 
