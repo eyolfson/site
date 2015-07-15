@@ -40,7 +40,8 @@ def update_blog(push):
         slug = file_path.rstrip('.md')
         markdown_content = git_repo[patch.new_id].data.decode()
         md = markdown.Markdown(extensions=['headerid(level=2, forceid=False)',
-                                           'meta'],
+                                           'meta',
+                                           'tables'],
                                output_format='html5')
         content = md.convert(markdown_content)
         title = md.Meta['title'][0]
