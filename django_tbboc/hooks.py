@@ -13,7 +13,10 @@
 # You should have received a copy of the GNU Affero General Public License along
 # with this program. If not, see <http://www.gnu.org/licenses/>.
 
-from django.db import models
+from django.conf import settings
 
-class PDF(models.Model):
-    last_updated = models.DateTimeField()
+def update_pdf(push):
+    if push.repo.path != 'jon/the-big-book-of-computing':
+        return
+    if push.refname != 'refs/heads/master':
+        return

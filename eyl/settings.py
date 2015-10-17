@@ -46,6 +46,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.csrf',
     'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.media',
 )
 
 SECRET_KEY = 'SECRET_KEY'
@@ -66,6 +67,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+MEDIA_URL = 'https://eyl.io/media/'
 STATIC_URL = 'https://eyl.io/static/'
 
 LOGIN_URL = 'login'
