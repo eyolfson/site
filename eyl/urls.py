@@ -29,4 +29,7 @@ urlpatterns = patterns('',
     url(r'^blog/', include('django_blog.urls', namespace='blog')),
     url(r'^git/', include('django_gitolite.urls', namespace='git')),
     url(r'^ssh/', include('django_ssh.urls', namespace='ssh')),
+
+    url(r'^the-big-book-of-computing/',
+        include('django_tbboc.urls', namespace='tbboc')),
 )
