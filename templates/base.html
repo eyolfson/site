@@ -26,6 +26,7 @@
           <ul class="nav navbar-nav">
             <li{% block nav-aur %}{% endblock %}><a href="{% url 'aur:home' %}">AUR</a></li>
             <li{% block nav-blog %}{% endblock %}><a href="{% url 'blog:index' %}">Blog</a></li>
+            <li{% block nav-research %}{% endblock %}><a href="{% url 'research' %}">Research</a></li>
             <li{% block nav-about %}{% endblock %}><a href="{% url 'about' %}">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

@@ -35,6 +35,9 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+def research(request):
+    return render(request, 'research.html')
+
 def version(request):
     import django
     import sys
