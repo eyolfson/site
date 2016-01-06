@@ -20,6 +20,7 @@ from eyl import views
 urlpatterns = patterns('',
     url(r'^$', views.home, name='home'),
     url(r'^about/$', views.about, name='about'),
+    url(r'^education/$', views.education, name='education'),
     url(r'^research/$', views.research, name='research'),
     url(r'^version/$', views.version, name='version'),
 

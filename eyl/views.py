@@ -35,6 +35,9 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+def education(request):
+    return render(request, 'education.html')
+
 def research(request):
     return render(request, 'research.html')
 
