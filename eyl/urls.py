@@ -14,18 +14,20 @@
 # You should have received a copy of the GNU General Public License along with
 # Eyl Site. If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
+from django.contrib.auth import views as auth_views
+
 from eyl import views
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^about/$', views.about, name='about'),
     url(r'^education/$', views.education, name='education'),
     url(r'^research/$', views.research, name='research'),
     url(r'^version/$', views.version, name='version'),
 
-    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
 
     url(r'^aur/', include('django_aur.urls', namespace='aur')),
     url(r'^blog/', include('django_blog.urls', namespace='blog')),
@@ -34,4 +36,4 @@ urlpatterns = patterns('',
 
     url(r'^the-big-book-of-computing/',
         include('django_tbboc.urls', namespace='tbboc')),
-)
+]
