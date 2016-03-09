@@ -19,15 +19,15 @@ from django.core.management.base import BaseCommand, CommandError
 from django_aur.models import Arch, Package
 
 class Command(BaseCommand):
-    args = 'package version architecture'
-    help = 'Creates an AUR update for the specified package'
+    args = 'package architecture'
+    help = 'Sets an AUR package unavailable'
 
     def get_version(self):
         from eyl.version import get_version
         return str(get_version())
 
     def handle(self, *args, **options):
-        if len(args) != 3:
+        if len(args) != 2:
             raise CommandError(self.args)
 
         try:
