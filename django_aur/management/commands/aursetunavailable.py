@@ -31,13 +31,12 @@ class Command(BaseCommand):
             raise CommandError(self.args)
 
         try:
-            arch = Arch.objects.get(name=args[2])
+            arch = Arch.objects.get(name=args[1])
         except Arch.DoesNotExist:
             msg = 'Architecture "{}" does not exist'
-            raise CommandError(msg.format(args[2]))
+            raise CommandError(msg.format(args[1]))
 
         name = args[0]
-        version = args[1]
-        package = Package.objects.get_or_create(name=args[0], arch=arch)[0]
+        package = Package.objects.get_or_create(name=name, arch=arch)[0]
         package.is_available = False
         package.save()
