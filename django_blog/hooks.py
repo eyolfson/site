@@ -22,23 +22,24 @@ def update_blog(push):
     )
     # TODO: There is no diff if this is the first commit
     for patch in git_repo.diff(push.old_rev, push.new_rev):
-        if patch.status == 'A':
+        delta = patch.delta
+        if delta.status == pygit2.GIT_DELTA_ADDED:
             pass
-        elif patch.status == 'M':
-            if patch.old_file_path != patch.new_file_path:
+        elif delta.status == pygit2.GIT_DELTA_MODIFIED:
+            if delta.old_file.path != delta.new_file.path:
                 print("Old and new file paths do not match")
                 continue
-        elif patch.status == 'D':
-            slug = patch.old_file_path.rstrip('.md')
+        elif delta.status == pygit2.GIT_DELTA_DELETED:
+            slug = delta.old_file.path.rstrip('.md')
             post = Post.objects.get(slug=slug)
             post.delete()
             continue
         else:
-            print("Unhandled status '{}'".format(patch.status))
+            print("Unhandled status '{}'".format(delta.status))
             continue
-        file_path = patch.new_file_path
+        file_path = delta.new_file.path
         slug = file_path.rstrip('.md')
-        markdown_content = git_repo[patch.new_id].data.decode()
+        markdown_content = git_repo[delta.new_file.id].data.decode()
         md = markdown.Markdown(extensions=['headerid(level=2, forceid=False)',
                                            'meta',
                                            'tables'],
