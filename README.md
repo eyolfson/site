@@ -2,6 +2,10 @@
 
 A personal site built on the Django framework
 
+## URL
+
+https://eyl.io/
+
 ## Custom Settings
 
 The following steps are recommended if you want to use custom settings.
