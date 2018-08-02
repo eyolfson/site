@@ -7,7 +7,7 @@ from django.db import models
 class Post(models.Model):
     content = models.TextField()
     date = models.DateField()
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=80)
     title = models.TextField()
 
     @models.permalink
