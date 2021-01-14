@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Update',
             fields=[
                 ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
-                ('package', models.ForeignKey(to_field='id', to='django_aur.Package')),
+                ('package', models.ForeignKey(to_field='id', to='django_aur.Package', on_delete=models.CASCADE)),
                 ('version', models.CharField(max_length=64)),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
             ],

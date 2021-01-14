@@ -14,23 +14,23 @@
 # You should have received a copy of the GNU General Public License along with
 # Eyl Site. If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls import include, url
 from django.contrib.auth import views as auth_views
+from django.urls import include, path
 
 from eyl import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^about/$', views.about, name='about'),
-    url(r'^education/$', views.education, name='education'),
-    url(r'^research/$', views.research, name='research'),
-    url(r'^version/$', views.version, name='version'),
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('education/', views.education, name='education'),
+    path('research/', views.research, name='research'),
+    path('version/', views.version, name='version'),
 
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-    url(r'^aur/', include('django_aur.urls', namespace='aur')),
-    url(r'^blog/', include('django_blog.urls', namespace='blog')),
-    url(r'^git/', include('django_gitolite.urls', namespace='git')),
-    url(r'^ssh/', include('django_ssh.urls', namespace='ssh')),
+    path('aur/', include('django_aur.urls')),
+    path('blog/', include('django_blog.urls')),
+    path('git/', include('django_gitolite.urls')),
+    path('ssh/', include('django_ssh.urls')),
 ]

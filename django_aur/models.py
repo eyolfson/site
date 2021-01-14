@@ -27,7 +27,7 @@ class Arch(models.Model):
         ordering = ['name']
 
 class Package(models.Model):
-    arch = models.ForeignKey(Arch, related_name='packages')
+    arch = models.ForeignKey(Arch, related_name='packages', on_delete=models.CASCADE)
     name = models.CharField(max_length=64, blank=False, db_index=True)
     is_available = models.BooleanField(default=True, blank=False, null=False)
 
@@ -40,7 +40,7 @@ class Package(models.Model):
         unique_together = ('name', 'arch')
 
 class Update(models.Model):
-    package = models.ForeignKey(Package, related_name='updates')
+    package = models.ForeignKey(Package, related_name='updates', on_delete=models.CASCADE)
     version = models.CharField(max_length=64, blank=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 

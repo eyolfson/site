@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             name='Package',
             fields=[
                 ('id', models.AutoField(primary_key=True, auto_created=True, verbose_name='ID', serialize=False)),
-                ('arch', models.ForeignKey(to_field='id', to='django_aur.Arch')),
+                ('arch', models.ForeignKey(to_field='id', to='django_aur.Arch', on_delete=models.CASCADE)),
                 ('name', models.CharField(db_index=True, max_length=64)),
             ],
             options={

@@ -3,6 +3,7 @@
 # This file is distributed under the GPLv3 license
 
 from django.db import models
+from django.urls import reverse
 
 class Post(models.Model):
     content = models.TextField()
@@ -10,9 +11,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=80)
     title = models.TextField()
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('blog:post', (), {'slug': self.slug})
+        return reverse('blog:post', (), {'slug': self.slug})
 
     class Meta:
         get_latest_by = 'date'

@@ -14,10 +14,11 @@
 # You should have received a copy of the GNU General Public License along with
 # Eyl Site. If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls import patterns, include, url
+from django.urls import include, path
 
 from django_aur import views
 
+app_name = 'aur'
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    path('', views.home, name='home'),
 ]

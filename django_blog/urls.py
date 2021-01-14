@@ -2,11 +2,12 @@
 #
 # This file is distributed under the GPLv3 license
 
-from django.conf.urls import patterns, include, url
+from django.urls import include, path
 
 from django_blog import views
 
+app_name = 'blog'
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^(?P<slug>[a-z0-9_-]+)/$', views.post, name='post'),
+    path('', views.index, name='index'),
+    path('<slug:slug>/', views.post, name='post'),
 ]
