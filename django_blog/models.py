@@ -12,7 +12,7 @@ class Post(models.Model):
     title = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('blog:post', (), {'slug': self.slug})
+        return reverse('blog:post', args=[self.slug])
 
     class Meta:
         get_latest_by = 'date'
