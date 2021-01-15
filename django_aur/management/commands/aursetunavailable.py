@@ -26,17 +26,20 @@ class Command(BaseCommand):
         from eyl.version import get_version
         return str(get_version())
 
+    def add_arguments(self, parser):
+        parser.add_argument('package')
+        parser.add_argument('arch')
+
     def handle(self, *args, **options):
-        if len(args) != 2:
-            raise CommandError(self.args)
+        package_name = options['package']
+        arch_name = options['arch']
 
         try:
-            arch = Arch.objects.get(name=args[1])
+            arch = Arch.objects.get(name=arch_name)
         except Arch.DoesNotExist:
             msg = 'Architecture "{}" does not exist'
-            raise CommandError(msg.format(args[1]))
+            raise CommandError(msg.format(arch_name))
 
-        name = args[0]
-        package = Package.objects.get_or_create(name=name, arch=arch)[0]
+        package = Package.objects.get_or_create(name=package_name, arch=arch)[0]
         package.is_available = False
         package.save()
